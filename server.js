@@ -5,6 +5,7 @@ var propostas = require('./propostasociais')
 var interesse = require('./interesse')
 var interesses = require('./interesses')
 var bodyParser = require('body-parser');
+var url = require('url');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -23,12 +24,17 @@ app.get('/obter', function(req, res) {
 });
 
 app.get('/interesses', function(req, res) {
+    var url_parts = url.parse(req.url, true);
+    var query = url_parts.query;
+    var id = req.query.id;
+    res.send(interesses.find(interesse => interesse.Interessado.Id == id));
+
     res.send(interesses);
 });
 
 app.post('/MarcarInteresse', function(req, res) {
     var id = req.body.id;
-    var usuario = req.body.usuario
+    var usuario = req.body.usuario;
 
     var proposta = propostas.find(proposta => proposta.Id == id);
     var interese = new interesse(proposta, {Id: usuario.id, Nome: usuario.nome})
