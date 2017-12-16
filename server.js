@@ -27,7 +27,7 @@ app.get('/interesses', function(req, res) {
     var url_parts = url.parse(req.url, true);
     var query = url_parts.query;
     var id = req.query.id;
-    res.send(interesses.find(interesse => interesse.Interessado.Id == id));
+    res.send(interesses.filter(interesse => interesse.Interessado.Id == id));
 });
 
 app.post('/MarcarInteresse', function(req, res) {
