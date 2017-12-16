@@ -23,12 +23,15 @@ app.get('/obter', function(req, res) {
 });
 
 app.post('/MarcarInteresse', function(req, res) {
-    console.log(req.body);
-    // var id = req.param("parametros");
-    // var usuario = req.param("usuario");
-    // var proposta = propostas.find(proposta => proposta.Id == id);
-    // var interesse = new interesse(proposta, {Id: usuario.id, Nome: usuario.Nome})
-    // interesses.push(interesse);
+    var id = req.body.id;
+    var usuario = req.body.usuario
+
+    var proposta = propostas.find(proposta => proposta.Id == id);
+    var interese = new interesse(proposta, {Id: usuario.id, Nome: usuario.nome})
+
+    interesses.push(interese);
+
+    res.send();
 });
 
 // app.get('/inserir', function(req, res) {

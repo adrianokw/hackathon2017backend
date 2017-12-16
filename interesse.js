@@ -1,8 +1,7 @@
 class Interesse{
-    constructor(trocaSocial, interessado){
-        this.TrocaSocial = trocasocial;
-        this.Interessado = { id: interessado.Id, nome: interessado.nome };
-        
+    constructor(propostaSocial, interessado){
+        this.PropostaSocial = propostaSocial;
+        this.Interessado = { Id: interessado.Id, Nome: interessado.Nome };
     }
 }
 module.exports = Interesse;
