@@ -22,6 +22,10 @@ app.get('/obter', function(req, res) {
     res.send(propostas);
 });
 
+app.get('/interesses', function(req, res) {
+    res.send(interesses);
+});
+
 app.post('/MarcarInteresse', function(req, res) {
     var id = req.body.id;
     var usuario = req.body.usuario
@@ -33,11 +37,6 @@ app.post('/MarcarInteresse', function(req, res) {
 
     res.send();
 });
-
-// app.get('/inserir', function(req, res) {
-//     var id = req.param('id');
-//     propostas.push(troca);
-// });
 
 app.listen(porta);
 
